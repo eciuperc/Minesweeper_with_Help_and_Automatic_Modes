@@ -1,20 +1,21 @@
 # Minesweeper_with_Help_and_Automatic_Modes
 Here is a Minesweeper game I created using Java.
-I implemented the game using the awt and swing libraries for the graphics, and using the game's rules from https://minesweeper.online/
-I also added four game modes I created myself to make the game more diverse.
+The game has been implemented using the awt and swing libraries for the graphics, and the rules from https://minesweeper.online/
+I also added four game modes that I created myself to make the game more diverse.
 
 ## How to play
 
-Minesweeper is a logic puzzle game, in which we have a rectangle board with cells, each one can contain a mine and the goal is to find out which cells have a mine, and which ones don't. For that, we have the following game rules:
-When we click, a tile, if it doesn't contain a mine, a number is displayed that correspond to the number of neighbor tiles (diagonal tiles included) that have a mine. There are at most 8 such neighbor tiles, so the number that will be displayed will be between 0 and 8.
+Minesweeper is a logic puzzle game where we have a rectangle board with tiles, with a certain number of them being a mine. The goal of the game is to discover all the tiles that have a mine. To do so, we have the following rules:
+
+- When we click a tile, if it is "safe" (i.e. it doesn't contain a mine), a number is displayed that correspond to the number of neighbor tiles (diagonal tiles included) that have a mine. There are at most 8 such tiles, so the number that will be displayed will be between 0 and 8.
 
 [ AJOUTER IMAGE AVEC COMMENTAIRE]
-
-The goal of the game is to use all the informations we get by clicking the tiles to fully uncover the board, without clicking a mine, which would make us lose.
 
 The player can also perform a right click on a tile, if he thinks that there is a mine on this tile. This sets a flag on the tile, and marks it as a "safe" tile. 
 
 [ AJOUTER IMAGE AVEC COMMENTAIRE]
+
+Using the informations we get at each click, the goal of the game is to uncover all the "safe" tile. Clicking a mine makes the player lose.
 
 Two commands have been created to speed-up the game:
 
