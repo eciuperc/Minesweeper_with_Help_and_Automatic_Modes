@@ -11,7 +11,7 @@ Minesweeper is a logic puzzle game where we have a rectangle board with tiles, a
 
 <figure class="image">
   <p align="center">
-    <img src="ReadMe_Images/Minesweeper.png" width=20% height=20%>
+    <img src="ReadMe_Images/Minesweeper.png" width=30% height=30%>
   </p>
   <figcaption> <p align="center">9x9 board with 10 mines</p> </figcaption>
 </figure>
@@ -22,7 +22,7 @@ To complete the game, we have the following rules:
 
 <figure class="image">
   <p align="center">
-    <img src="ReadMe_Images/Left_Click.png" width=20% height=20%>
+    <img src="ReadMe_Images/Left_Click.png" width=30% height=30%>
   </p>
   <figcaption> <p align="center">Only one neighbor of the tile clicked has a mine</p> </figcaption>
 </figure>
@@ -31,7 +31,7 @@ To complete the game, we have the following rules:
 
 <figure class="image">
   <p align="center">
-    <img src="ReadMe_Images/Right_Click.png" width=20% height=20%>
+    <img src="ReadMe_Images/Right_Click.png" width=30% height=30%>
   </p>
   <figcaption> <p align="center">Example of right click</p> </figcaption>
 </figure>
@@ -47,7 +47,7 @@ For example, in the image below, we clicked the central tile which turned out to
 
 <figure class="image">
   <p align="center">
-    <img src="ReadMe_Images/Empty_Click.png" width=20% height=20%>
+    <img src="ReadMe_Images/Empty_Click.png" width=30% height=30%>
   </p>
   <figcaption> <p align="center">Example of what happens when clicking an empty tile</p> </figcaption>
 </figure>
@@ -58,8 +58,8 @@ In the following example below, we chord the tile surrounded by 2 flags, which p
 
 <figure class="image">
   <p align="center" float="left">
-    <img src="ReadMe_Images/Chord_Before.png" width=20% height=20%>
-    <img src="ReadMe_Images/Chord_After.png" width=20% height=20%> 
+    <img src="ReadMe_Images/Chord_Before.png" width=30% height=30%>
+    <img src="ReadMe_Images/Chord_After.png" width=30% height=30%> 
   </p>
   <figcaption> <p align="center">Chording a tile </p> </figcaption>
 </figure>
@@ -87,8 +87,8 @@ In the following example, it is impossible for the player to find a move without
 
 <figure class="image">
   <p align="center" float="left">
-    <img src="ReadMe_Images/Unblocker_Before.png" width=20% height=20%>
-    <img src="ReadMe_Images/Unblocker_After.png" width=20% height=20%> 
+    <img src="ReadMe_Images/Unblocker_Before.png" width=30% height=30%>
+    <img src="ReadMe_Images/Unblocker_After.png" width=30% height=30%> 
   </p>
   <figcaption> <p align="center">Unblocking the player</p> </figcaption>
 </figure>
@@ -100,8 +100,8 @@ This game mode can be very useful for beginners learning the game, as well as fo
 
 <figure class="image">
   <p align="center" float="left">
-    <img src="ReadMe_Images/Help_Before.png" width=20% height=20%>
-    <img src="ReadMe_Images/Help_After.png" width=20% height=20%> 
+    <img src="ReadMe_Images/Help_Before.png" width=30% height=30%>
+    <img src="ReadMe_Images/Help_After.png" width=30% height=30%> 
   </p>
   <figcaption> <p align="center">Helping the player</p> </figcaption>
 </figure>
@@ -123,14 +123,14 @@ In this mode, we can follow what the bot does step by step. The player can't cli
 
 <figure class="image">
   <p align="center">
-    <img src="ReadMe_Images/Step_By_Step.png" width=40% height=40%>
+    <img src="ReadMe_Images/Step_By_Step.png" width=65% height=65%>
   </p>
   <figcaption> <p align="center">Step by step mode</p> </figcaption>
 </figure>
 
 <figure class="image">
   <p align="center">
-    <img src="ReadMe_Images/Step_By_Step_Probabilities.png" width=40% height=40%>
+    <img src="ReadMe_Images/Step_By_Step_Probabilities.png" width=65% height=65%>
   </p>
   <figcaption> <p align="center">Displaying probabilities for each tile to be a mine</p> </figcaption>
 </figure>
@@ -143,8 +143,8 @@ We can see what it looks like in the images below:
 
 <figure class="image">
   <p align="center" float="left">
-    <img src="ReadMe_Images/Let_It_Play_Playing.png" width=40% height=40%>
-    <img src="ReadMe_Images/Let_It_Play_Done.png" width=40% height=40%> 
+    <img src="ReadMe_Images/Let_It_Play_Playing.png" width=65% height=65%>
+    <img src="ReadMe_Images/Let_It_Play_Done.png" width=65% height=65%> 
   </p>
   <figcaption> <p align="center">Bot playing 5000 games in expert difficulty </p> </figcaption>
 </figure>
