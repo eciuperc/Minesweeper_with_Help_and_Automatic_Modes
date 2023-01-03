@@ -1,17 +1,17 @@
 # Minesweeper_with_Help_and_Automatic_Modes
 Here is a Minesweeper game I created using Java.
+
 The game has been implemented using the awt and swing libraries for the graphics, and the rules from https://minesweeper.online/
+
 I also added four game modes that I created myself to make the game more diverse.
 
 ## How to play
 
-Minesweeper is a logic puzzle game where we have a rectangle board with tiles, with a certain number of them being a mine. The goal of the game is to discover all the tiles that have a mine. To do so, we have the following rules:
+Minesweeper is a logic puzzle game where we have a rectangle board with tiles, with a certain number of them being a mine. The goal of the game is to discover which tiles have a mine. To do so, we have the following rules:
 
-- When we click a tile, if it is "safe" (i.e. it doesn't contain a mine), a number is displayed that correspond to the number of neighbor tiles (diagonal tiles included) that have a mine. There are at most 8 such tiles, so the number that will be displayed will be between 0 and 8.
+- When we left-click a tile, if it is "safe" (i.e. it doesn't contain a mine), a number is displayed that correspond to the number of neighbor tiles (diagonal tiles included) that have a mine. There are at most 8 such tiles, so the number that will be displayed will be between 0 and 8.
 
-[ AJOUTER IMAGE AVEC COMMENTAIRE]
-
-The player can also perform a right click on a tile, if he thinks that there is a mine on this tile. This sets a flag on the tile, and marks it as a "safe" tile. 
+- When we think a tile has a mine, we can right-click on it, which sets a flag on it and marks it as "mined" for the rest of the game. 
 
 [ AJOUTER IMAGE AVEC COMMENTAIRE]
 
