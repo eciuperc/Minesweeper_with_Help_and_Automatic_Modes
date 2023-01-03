@@ -57,16 +57,11 @@ For example, in the image below, we clicked the central tile which turned out to
 In the following example below, we chord the tile surrounded by 2 flags, which permits to uncover its 2 neighbors.
 
 <figure class="image">
-  <p align="center">
-    <img src="/Chord_Before.png" width=20% height=20% />
+  <p align="center" float="left">
+    <img src="ReadMe_Images/Chord_Before.png" width=20% height=20%>
+    <img src="ReadMe_Images/Chord_After.png" width=20% height=20%> 
   </p>
-  <figcaption> <p align="center">Chording a tile</p> </figcaption>
-</figure>
-<figure class="image">
-  <p align="center">
-    <img src="/Chord_After.png" width=20% height=20% />
-  </p>
-  <figcaption> <p align="center">Chording a tile</p> </figcaption>
+  <figcaption> <p align="center">Chording a tile </p> </figcaption>
 </figure>
 
 Minesweeper has 3 difficulties:
@@ -92,10 +87,10 @@ In the following example, it is impossible for the player to find a move without
 
 <figure class="image">
   <p align="center" float="left">
-    <img src="/Ublocker_Before.png" width=20% height=20% />
-    <img src="/Unblocker_After.png" width=20% height=20% />  
+    <img src="ReadMe_Images/Unblocker_Before.png" width=20% height=20%>
+    <img src="ReadMe_Images/Unblocker_After.png" width=20% height=20%> 
   </p>
-  <figcaption> <p align="center">Unblocking the player </p> </figcaption>
+  <figcaption> <p align="center">Unblocking the player</p> </figcaption>
 </figure>
 
 ### Help mode
@@ -105,10 +100,10 @@ This game mode can be very useful for beginners learning the game, as well as fo
 
 <figure class="image">
   <p align="center" float="left">
-   <img src="/Help_Before.png" width=20% height=20% />
-    <img src="/Help_After.png" width=20% height=20% />  
+    <img src="ReadMe_Images/Help_Before.png" width=20% height=20%>
+    <img src="ReadMe_Images/Help_After.png" width=20% height=20%> 
   </p>
-  <figcaption> <p align="center">Bringing help to the player </p> </figcaption>
+  <figcaption> <p align="center">Helping the player</p> </figcaption>
 </figure>
 
 ### Automatic modes:
@@ -128,14 +123,14 @@ In this mode, we can follow what the bot does step by step. The player can't cli
 
 <figure class="image">
   <p align="center">
-    <img src="ReadMe_Images/Step_By_Step.png" width=20% height=20%>
+    <img src="ReadMe_Images/Step_By_Step.png" width=40% height=40%>
   </p>
   <figcaption> <p align="center">Step by step mode</p> </figcaption>
 </figure>
 
 <figure class="image">
   <p align="center">
-    <img src="ReadMe_Images/Step_By_Step_Probabilities.png" width=20% height=20%>
+    <img src="ReadMe_Images/Step_By_Step_Probabilities.png" width=40% height=40%>
   </p>
   <figcaption> <p align="center">Displaying probabilities for each tile to be a mine</p> </figcaption>
 </figure>
@@ -148,8 +143,8 @@ We can see what it looks like in the images below:
 
 <figure class="image">
   <p align="center" float="left">
-    <img src="/Let__It_Play_Playing.png" width=20% height=20% />
-    <img src="/Let_It_Play_Done.png" width=20% height=20% />   
+    <img src="ReadMe_Images/Let_It_Play_Playing.png" width=40% height=40%>
+    <img src="ReadMe_Images/Let_It_Play_Done.png" width=40% height=40%> 
   </p>
   <figcaption> <p align="center">Bot playing 5000 games in expert difficulty </p> </figcaption>
 </figure>
