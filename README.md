@@ -27,7 +27,7 @@ To complete the game, we have the following rules:
   <figcaption> <p align="center">Only one neighbor of the tile clicked has a mine</p> </figcaption>
 </figure>
 
-- When we think a tile has a mine, we can right-click on it, which sets a flag on it and marks it as "mined" for the rest of the game. For example, in the following image, the top-left tile has two neighbor tiles, and one of its three neighbors is already uncovered, so the two other tiles must have a mine.
+- When we think a tile has a mine, we can right-click on it, which sets a flag on it and marks it as "mined" for the rest of the game. In the following example, the top-left tile has two neighbor tiles, and one of its three neighbors is already uncovered, so the two other tiles have to have a mine.
 
 <figure class="image">
   <p align="center" float="left">
