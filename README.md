@@ -30,10 +30,11 @@ To complete the game, we have the following rules:
 - When we think a tile has a mine, we can right-click on it, which sets a flag on it and marks it as "mined" for the rest of the game. For example, in the following image, the top-left tile has two neighbor tiles, and one of its three neighbors is already uncovered, so the two other tiles must have a mine.
 
 <figure class="image">
-  <p align="center">
+  <p align="center" float="left">
     <img src="ReadMe_Images/Right_Click.png" width=30% height=30%>
+    <img src="ReadMe_Images/Right_Clicked.png" width=30% height=30%> 
   </p>
-  <figcaption> <p align="center">Example of right click</p> </figcaption>
+  <figcaption> <p align="center">Marking tiles as mines</p> </figcaption>
 </figure>
 
 Using the informations we get at each click, the goal of the game is to uncover all the "safe" tiles. We lose if we left-click a mined tile. <br/>
