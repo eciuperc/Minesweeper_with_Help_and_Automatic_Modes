@@ -57,9 +57,14 @@ For example, in the image below, we clicked the central tile which turned out to
 In the following example below, we chord the tile surrounded by 2 flags, which permits to uncover its 2 neighbors.
 
 <figure class="image">
-  <p align="center" float="left">
+  <p align="center">
     <img src="/Chord_Before.png" width=20% height=20% />
-    <img src="/Chord_After.png" width=20% height=20% /> 
+  </p>
+  <figcaption> <p align="center">Chording a tile</p> </figcaption>
+</figure>
+<figure class="image">
+  <p align="center">
+    <img src="/Chord_After.png" width=20% height=20% />
   </p>
   <figcaption> <p align="center">Chording a tile</p> </figcaption>
 </figure>
