@@ -79,8 +79,8 @@ To compute all the certain tiles, the solver implements the two previous ideas b
 
 <figure class="image">
   <p align="center" float="left">
-    <img src="Other_Images/100pSure_Groups_Division.png" width=45% height=45%>
-    <img src="Other_Images/100pSure_Groups.png" width=45% height=45%> 
+    <img src="Other_Images/100pSure_Groups_Before_Division.png" width=45% height=45%>
+    <img src="Other_Images/100pSure_Groups_Division.png" width=45% height=45%> 
   </p>
   <figcaption> <p align="center">Groups before and after division</p> </figcaption>
 </figure>
