@@ -1,74 +1,96 @@
-# Algorithms used by the solver
+# How the solver works
 
-The Solver is used when playing in automatic mode, i.e. in Step by step mode or in Let it play mode. Its role is, at any moment of the game, to find out which tiles to click to continue the game, by guaranteeing the highest win-rate.
+The Solver is used when playing in automatic mode, i.e. in Step by step mode or in Let it play mode. Its role is to find out which tiles to click to continue the game, by guaranteeing the highest win-rate.
 
-It distinguishes between three different possibilities, depending of which it acts differently
+It can operate on 3 different ways, depending on the current state of the game.
 
 ## Beginning of the game
 
-Unfortunately, at the beginning of the game, since we have almost no information on the mines, we have to click tiles and hope we don't get a mine. We consider that the game "really" begins when we fall into a tile that has 0 (i.e. that has no mined neighbors), because then, many other tiles will be displayed and we will get much more informations.
+At the beginning of the game, since we have almost no information on the mines, we have no other choice but to click the tiles and hope we don't fall into a mine. We have to do this until we fall into a tile that has a value of 0 (i.e. that has no mined neighbors), because then, several other tiles will be uncovered as well and we will get much more information.
 
-The best startegy is to click tiles by beginning with the corner tiles, because these have only 3 neighbors instead of 8 like the central tiles, and hence have much more chances of having a 0. Then, we click tiles on the border, which have only 5 neighbors.
+The best startegy is to click tiles by beginning with the corners, since these tiles have only 3 neighbors, and hence have much more chances of having a value of 0.
 
-At this point, the solver searches for the best tile on the border to click. The best tile to click is the one that is the furthest from the tiles already clicked, i.e. the tile that requires the most moves (N-S-E-W or diagonal) to go to an uncovered tile.
+Once all the corners are clicked, if we didn't get a 0 yet, we continue by clicking on the borders, which tiles have only 5 neighbors.
 
-The best tile to click is the one that has the biggest distance to the tiles that have already been uncovered, i.e. the shortest number of steps we have to do to get to an uncovered tile, counting N-S-E-W step, or diagonal steps. Then, we get to central tiles, but this case is very rare.
+The solver searches the best tile on the border to click, which is the furthest from the tiles already clicked, i.e. the tile that requires the most moves (N-S-E-W or diagonal) to go to an uncovered tile.
 
-Unfortunately, a proportion of the games are lost during this step, which inscreases with the difficulty:
-* Beginner: Around 5%
-* Intermediate: Around 9%
-* Expert: Around 17%
-* Demon: Around 22%
+Unfortunately a few games are lost during this stage, with a proportion depending on the difficulty:
+* Beginner: Around 5% of the games
+* Intermediate: Around 9% of the games
+* Expert: Around 17% of the games
+* Demon: Around 22% of the games
 
 ## During the game
 
-Once a 0-tile has been found, we can finally stop clicking tiles blindly, and really begin the game. The solver will now perform precise computations to choose the best move, so he can guarantee the best chance of continuing the game
+Once a 0-tile has been found, the first stage is over and the solver will now use the informations given by the tiles to progress through the game. The goal will be to progressively uncover the tiles, by minimzing the probability of dying.
 
-In this phase, the solver can do two things:
-* Look for tiles we can be sure are safe or mined
-* Compute the probability that each tile has to be a mine, and choose the one that has the lowest one. This is done only if the first task doesn't return a single tile
+To do so, the solver can operate in two ways:
+* Look for tiles it can be sure are safe or mined
+* If it doesn't find such tiles, compute the probability that each tile has to be a mine, and choose the one that has the lowest one.
 
-### Computing groups
+### Finding certain tiles
 
-First, the solver tries to find tiles that he can be 100% sure of. Let's understand how he proceeds by looking at an example:
-
-<figure class="image">
-  <p align="center">
-    <img src="Other_Images/100pSure_Before.png" width=30% height=30%>
-  </p>
-  <figcaption> <p align="center">Example</p> </figcaption>
-</figure>
-
-On this example, there are obvious tiles: 
-* There are 3 tiles which numbers equal the number of unknown neighbors, and therefore all the neighbors of these tiles are mines
-* If we add these mines, there are 4 more tiles which numbers equal the number of flagged neighbors, and therefore all their remaining neighbors are safe
+First, the solver tries to find tiles which nature can be determined in a certain way. Let's understand how he proceeds by looking at the following example:
 
 <figure class="image">
   <p align="center">
-    <img src="Other_Images/100pSure_First_Step.png" width=30% height=30%>
+    <img src="Other_Images/100pSure_Before.png" width=45% height=45%>
   </p>
-  <figcaption> <p align="center">First safe and mined tiles deduced</p> </figcaption>
+  <figcaption> <p align="center">How certain tiles are found</p> </figcaption>
 </figure>
 
-But there are also other tiles that we can find looking on this example, which a bit less obvious than the previous ones.
+First of all, we can use two very basic rules to find tiles:
+* If a tile has the same number of unknown mines as the number of unknown neighbors, then all of its unknown negihbors must be mines.
+* If a tile has the same number of neighbor mines as the number of flagged-neighbors, then all its remaining neighbors must be safe.
 
-On both of the below images, there is only one mine in the blue rectangle, and two in the yellow rectangle. Therefore, there has to be one mine in the right tile (resp. left tile) of the yellow rectangle, and the left tile (resp. right tile) of the blue rectangle of the first image (resp. second image)
-
-<figure class="image">
-  <p align="center" float="left">
-    <img src="ReadMe_Images/100pSure_Second_Step.png" width=30% height=30%>
-    <img src="ReadMe_Images/100pSure_Second_Step_Bis.png" width=30% height=30%> 
-  </p>
-  <figcaption> <p align="center">Other safe and mined tiles deduced</p> </figcaption>
-</figure>
-
-Finally, after applying the same reasoning for the remaining tiles, we get the following disposition:
+With these two rules, we can deduce some tiles on our example, as can be seen on the image below: the red arrows correspond to the first rule, and the green arrows correspond to the second rule.
 
 <figure class="image">
   <p align="center">
-    <img src="Other_Images/100pSure_After.png" width=30% height=30%>
+    <img src="Other_Images/100pSure_First_Step.png" width=45% height=45%>
+  </p>
+  <figcaption> <p align="center">First method for determining certain tiles</p> </figcaption>
+</figure>
+
+However, there are a few more tiles to be found in the example, which are a bit less obvious than the previous ones.
+
+On the below image, the tiles' values learn us that there is only one mine in the blue rectangle, and two in the yellow rectangle. This means that there has to be one mine in the right tile of the yellow rectangle, no mine the left tile of the blue rectangle, and one mine in the two tiles that are common to the two groups. We can therefore deduce the nature of two supplementary tiles.
+
+<figure class="image">
+  <p align="center">
+    <img src="Other_Images/100pSure_Second_Step.png" width=45% height=45%>
+  </p>
+  <figcaption> <p align="center">Finding tiles by grouping them</p> </figcaption>
+</figure>
+
+We can apply the same rules for all the remaining tiles, and get the following result:
+
+<figure class="image">
+  <p align="center">
+    <img src="Other_Images/100pSure_After.png" width=45% height=45%>
   </p>
   <figcaption> <p align="center">Safe and mined tiles deduced</p> </figcaption>
 </figure>
+
+To compute all the certain tiles, the solver implements the two previous ideas by creating groups of tiles, and computing lower and upper bounds for the number of mines each group of tiles contains. To do so, it proceeds this way: 
+
+* For each tile that has at least one unknown neighbor, it defines the group containing all of its unknown neighbors. This group has the same number of mines as the number of unknown mines around the tile.
+* It "divides" these groups into smaller groups, by the process described in the image below:
+
+<figure class="image">
+  <p align="center" float="left">
+    <img src="Other_Images/100pSure_Groups_Division.png" width=45% height=45%>
+    <img src="Other_Images/100pSure_Groups.png" width=45% height=45%> 
+  </p>
+  <figcaption> <p align="center">Groups before and after division</p> </figcaption>
+</figure>
+
+The first group contains the tiles that are only in the blue group. The third group contains the tiles that are only in the yellow one. The second group contains the tiles that are in both groups. The solver then deduces lower and upper bounds for the number of mines of each of the three groups created (see SeparateTwoTileGroups method of MinesweeperSolver class for precise formulas). It is also important to note that the two original groups are kept, because they contain supplementary information.
+
+* It keeps dividing all the groups, until no more groups are created AND no supplementary information is added concerning the number of mines of each group.
+
+Once all the groups have been computed, the solver deduces the tiles that are certain to be safe or mined, using the two following rules:
+* If a given group has no mines, then it means that all of its tiles are safe. 
+* If a group has the same numbers of tiles as of mines, it means that all of its tiles are mines.
 
 ### Computing probabilities
