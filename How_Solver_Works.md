@@ -22,6 +22,53 @@ Unfortunately, a proportion of the games are lost during this step, which inscre
 
 ## During the game
 
+Once a 0-tile has been found, we can finally stop clicking tiles blindly, and really begin the game. The solver will now perform precise computations to choose the best move, so he can guarantee the best chance of continuing the game
+
+In this phase, the solver can do two things:
+* Look for tiles we can be sure are safe or mined
+* Compute the probability that each tile has to be a mine, and choose the one that has the lowest one. This is done only if the first task doesn't return a single tile
+
 ### Computing groups
+
+First, the solver tries to find tiles that he can be 100% sure of. Let's understand how he proceeds by looking at an example:
+
+<figure class="image">
+  <p align="center">
+    <img src="Other_Images/100pSure_Before.png" width=30% height=30%>
+  </p>
+  <figcaption> <p align="center">Example</p> </figcaption>
+</figure>
+
+On this example, there are obvious tiles: 
+* There are 3 tiles which numbers equal the number of unknown neighbors, and therefore all the neighbors of these tiles are mines
+* If we add these mines, there are 4 more tiles which numbers equal the number of flagged neighbors, and therefore all their remaining neighbors are safe
+
+<figure class="image">
+  <p align="center">
+    <img src="Other_Images/100pSure_First_Step.png" width=30% height=30%>
+  </p>
+  <figcaption> <p align="center">First safe and mined tiles deduced</p> </figcaption>
+</figure>
+
+But there are also other tiles that we can find looking on this example, which a bit less obvious than the previous ones.
+
+On both of the below images, there is only one mine in the blue rectangle, and two in the yellow rectangle. Therefore, there has to be one mine in the right tile (resp. left tile) of the yellow rectangle, and the left tile (resp. right tile) of the blue rectangle of the first image (resp. second image)
+
+<figure class="image">
+  <p align="center" float="left">
+    <img src="ReadMe_Images/100pSure_Second_Step.png" width=30% height=30%>
+    <img src="ReadMe_Images/100pSure_Second_Step_Bis.png" width=30% height=30%> 
+  </p>
+  <figcaption> <p align="center">Other safe and mined tiles deduced</p> </figcaption>
+</figure>
+
+Finally, after applying the same reasoning for the remaining tiles, we get the following disposition:
+
+<figure class="image">
+  <p align="center">
+    <img src="Other_Images/100pSure_After.png" width=30% height=30%>
+  </p>
+  <figcaption> <p align="center">Safe and mined tiles deduced</p> </figcaption>
+</figure>
 
 ### Computing probabilities
