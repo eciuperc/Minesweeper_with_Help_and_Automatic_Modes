@@ -94,3 +94,37 @@ Once all the groups have been computed, the solver deduces the tiles that are ce
 * If a group has the same numbers of tiles as of mines, it means that all of its tiles are mines.
 
 ### Computing probabilities
+
+In some cases, it can happen that the previous computations give no solution. In this case, the solver will have no other choice than to guess a tile, by minimizing the probability of falling into a mine. To do so, the solver will look at all the unknown tiles that have a uncovered neighbor (that we will refer to as "candidate tiles" in what follows), and compute every possible disposition on mines on these tiles that can satisfy the constraints imposed by the tiles.
+
+Then, for each of these tiles, it will count the number of such possibilities where this tile has a mine, and divide it by the total number of possibilities.
+
+To do this, the solver uses a recursive function. There are two base cases:
+
+- If there are no candidate tiles, then there is only one solution.
+
+- If there is only one group of tiles, then we can give an explicit formula for the total number of dispositions, and for the total number of dispositions where a given tile has a mine. Let's call $M$ the number of mines in the group, and $N$ the number of its tiles. Then :
+* The total number of possibilities is $\displaystyle {N \choose M}$
+* For each tile, the total number of possibilities where this tile has a mine is $\displaystyle {N-1 \choose M-1}$
+
+On the following example, we have $\displaystyle {8 \choose 3}$ possibilities in total, and for each tile, $\displaystyle {7 \choose 2}$ possibilities where it is a mine. 
+
+Now, in the general case, the solver will act recursively: 
+* Among all of its groups, the solver will choose one group and enumerate all of its possibile mine dispositions.
+* For each one of its dispositions, it will call itself to compute the number of possibilities.
+* It will add all of the possibilities
+
+On the following example, we can visualise the two different dispositions the solver will try:
+
+It is important to note here that the group chosen in this step is crucial if we want to get a reasonable computation time. To make sure of that, we will chose the group depending on two points:
+* The chosen group must have a number of possible dispositions as small as possible.
+* Each of its disposition, must permitt to uncover as much of the board as possible, to reduce the number of possibilities that will be computed.
+ 
+
+
+
+As it is, the solver does compute all the possibilities as we need. However, it oftenly happens that the candidate tiles have several "connected components", in the sense that it can have several sub-groups that are independent with each-other, like on the following example:
+
+In such a case, the total number of possibilities can be computed as the product between the number of possibilities for each connected component, and can therefore by extremely large if we have several connected components, so computing all the possibilities one by one would be impossible. The solution, in such a case, is to compute the possibilities for each connected component separately, and then all of the possibilities, which gives a much more reasonable execution time.
+
+### Computing probabilities - refinement
